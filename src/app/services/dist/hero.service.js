@@ -19,6 +19,11 @@ var HeroService = /** @class */ (function () {
         this.messageService.add('HeroService: fetched heroes');
         return heroes;
     };
+    HeroService.prototype.getHero = function (id) {
+        var hero = mock_heroes_1.HEROES.find(function (h) { return h.id === id; });
+        this.messageService.add("HeroService: fetched hero id=" + id);
+        return rxjs_1.of(hero);
+    };
     HeroService = __decorate([
         core_1.Injectable({
             providedIn: 'root'
