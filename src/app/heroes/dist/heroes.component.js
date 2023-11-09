@@ -9,17 +9,12 @@ exports.__esModule = true;
 exports.HeroesComponent = void 0;
 var core_1 = require("@angular/core");
 var HeroesComponent = /** @class */ (function () {
-    function HeroesComponent(heroService, messageService) {
+    function HeroesComponent(heroService) {
         this.heroService = heroService;
-        this.messageService = messageService;
         this.heroes = [];
     }
     HeroesComponent.prototype.ngOnInit = function () {
         this.getHeroes();
-    };
-    HeroesComponent.prototype.onSelect = function (hero) {
-        this.selectedHero = hero;
-        this.messageService.add("HeroesComponent: Selected hero id=" + hero.id);
     };
     HeroesComponent.prototype.getHeroes = function () {
         var _this = this;
