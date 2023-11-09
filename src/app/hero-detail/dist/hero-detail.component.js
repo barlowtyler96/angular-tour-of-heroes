@@ -9,8 +9,23 @@ exports.__esModule = true;
 exports.HeroDetailComponent = void 0;
 var core_1 = require("@angular/core");
 var HeroDetailComponent = /** @class */ (function () {
-    function HeroDetailComponent() {
+    function HeroDetailComponent(route, heroService, location) {
+        this.route = route;
+        this.heroService = heroService;
+        this.location = location;
     }
+    HeroDetailComponent.prototype.ngOnInit = function () {
+        this.getHero();
+    };
+    HeroDetailComponent.prototype.getHero = function () {
+        var _this = this;
+        var id = Number(this.route.snapshot.paramMap.get('id'));
+        this.heroService.getHero(id)
+            .subscribe(function (hero) { return _this.hero = hero; });
+    };
+    HeroDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     __decorate([
         core_1.Input()
     ], HeroDetailComponent.prototype, "hero");
